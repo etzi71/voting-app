@@ -17,9 +17,6 @@ pipeline {
       }
     }
     stage('Push result image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/result:'') {
           sh 'docker push dockersamples/result'
@@ -27,9 +24,6 @@ pipeline {
       }
     }
     stage('Push vote image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/vote:'') {
           sh 'docker push dockersamples/vote'
@@ -37,9 +31,6 @@ pipeline {
       }
     }
     stage('Push worker image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/worker:'') {
           sh 'docker push dockersamples/worker'
