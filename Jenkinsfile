@@ -6,7 +6,7 @@ pipeline {
       steps {
         sh 'docker build -t dockersamples/result ./result'
       }
-   } catch (Exception e) {
+   } catch (err) {
       echo "Stage failed, but we continue"
    } 
     stage('Build vote') {
