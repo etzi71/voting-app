@@ -21,7 +21,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
+        withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/result:'') {
           sh 'docker push dockersamples/result'
         }
       }
@@ -31,7 +31,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
+        withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/vote:'') {
           sh 'docker push dockersamples/vote'
         }
       }
@@ -41,7 +41,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
+        withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/worker:'') {
           sh 'docker push dockersamples/worker'
         }
       }
