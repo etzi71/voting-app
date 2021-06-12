@@ -1,12 +1,14 @@
 pipeline {
   agent { label 'master1' }
   stages {
+  try {
     stage('Build result') {
       steps {
         sh 'docker build -t dockersamples/result ./result'
-        sh 'exit 0'
       }
-    } 
+   } catch (Exception e) {
+      echo "Stage failed, but we continue"
+   } 
     stage('Build vote') {
       steps {
         sh 'docker build -t dockersamples/vote ./vote'
