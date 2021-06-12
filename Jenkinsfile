@@ -18,21 +18,21 @@ pipeline {
     }
     stage('Push result image') {
       steps {
-        withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/result:'') {
+        withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url: 'docker.io/etzi71/result') {
           sh 'docker push dockersamples/result'
         }
       }
     }
     stage('Push vote image') {
       steps {
-        withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/vote:'') {
+        withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url: 'docker.io/etzi71/vote') {
           sh 'docker push dockersamples/vote'
         }
       }
     }
     stage('Push worker image') {
       steps {
-        withDockerRegistry(9008c74f-4647-40cd-b983-a85a9f0ffffa: 'dockerbuildbot-index.docker.io', etzi71/worker:'') {
+        withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url: 'docker.io/etzi71/vote') {
           sh 'docker push dockersamples/worker'
         }
       }
