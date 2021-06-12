@@ -4,16 +4,19 @@ pipeline {
     stage('Build result') {
       steps {
         sh 'docker build -t dockersamples/result ./result'
+        sh 'exit 0'
       }
     } 
     stage('Build vote') {
       steps {
         sh 'docker build -t dockersamples/vote ./vote'
+        sh 'exit 0'
       }
     }
     stage('Build worker') {
       steps {
         sh 'docker build -t dockersamples/worker ./worker'
+        sh 'exit 0'
       }
     }
     stage('Push result image') {
