@@ -8,7 +8,7 @@ pipeline {
     } 
     stage('Build vote') {
       steps {
-        sh 'docker build -t etzi71vote ./vote'
+        sh 'docker build -t etzi71/vote ./vote'
       }
     }
     stage('Build worker') {
