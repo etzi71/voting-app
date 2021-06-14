@@ -17,9 +17,6 @@ pipeline {
       }
     }
     stage('Push result image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url:'') {
           sh 'docker push etzi71/result'
@@ -27,9 +24,6 @@ pipeline {
       }
     }
     stage('Push vote image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url:'') {
           sh 'docker push etzi71/vote'
@@ -37,9 +31,6 @@ pipeline {
       }
     }
     stage('Push worker image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url:'') {
           sh 'docker push etzi71/worker'
