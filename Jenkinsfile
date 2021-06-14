@@ -18,21 +18,21 @@ pipeline {
     }
     stage('Push result image') {
       steps {
-        withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url:'') {
+        withDockerRegistry(credentialsId: 'dockerhub', url:'') {
           sh 'docker push etzi71/result'
         }
       }
     }
     stage('Push vote image') {
       steps {
-        withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url:'') {
+        withDockerRegistry(credentialsId: 'dockerhub', url:'') {
           sh 'docker push etzi71/vote'
         }
       }
     }
     stage('Push worker image') {
       steps {
-        withDockerRegistry(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', url:'') {
+        withDockerRegistry(credentialsId: 'dockerhub', url:'') {
           sh 'docker push etzi71/worker'
         }
       }
