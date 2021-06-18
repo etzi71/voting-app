@@ -37,5 +37,11 @@ pipeline {
         }
       }
     }
+    stage('Update helm values') {
+      steps{
+          sh "num=${env.BUILD_NUMBER}"
+          sh 'sed -i "s/01/$num/g" /home/etzi71/helm_chart/values.yaml'
+      }
+    }
   }
 }
