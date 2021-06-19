@@ -39,7 +39,7 @@ pipeline {
     }
     stage('Update helm values') {
       steps{
-          sh "update_build_number.sh ${env.BUILD_NUMBER}"
+          sh "home/etzi71/workspace/build_images/update_build_number.sh ${env.BUILD_NUMBER}"
       }
     }
   }
