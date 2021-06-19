@@ -30,8 +30,8 @@ pipeline {
               sh "/snap/bin/gcloud compute firewall-rules create node-port-${params.RESULT_PORT} --network ${params.GCP_CLUSTER_VPC_NAME} --allow tcp:${params.RESULT_PORT}"
            }
         }              
-    catch (Exception e) {
-            echo 'Exception occurred: ' + e.toString()
+    catch (all) {
+            echo 'Exception occurred'
         }
     }
     stage('get ip') {
