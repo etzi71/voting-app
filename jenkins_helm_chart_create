@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Install') {
       steps {
-        sh "cd ${env.TF_WORKDIR}/${params.HELM_DIR}; /snap/bin/helm install ${params.HELM_NAME} ."
+        sh "cd "${env.WORKSPACE}/${params.HELM_DIR}; /snap/bin/helm install ${params.HELM_NAME} ."
       }
     }
     stage('gcloud create firewall-rules') {
