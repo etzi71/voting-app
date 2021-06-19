@@ -33,5 +33,7 @@ pipeline {
        steps {
         sh "echo `/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 |awk '{print $7}'`:${params.VOTE_PORT}"
         sh "echo `/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 |awk '{print $7}'`:${params.RESULT_PORT}"
+       }
+    }   
   }    
 }
