@@ -1,0 +1,22 @@
+
+pipeline {
+  agent { label 'master1' }
+  environment {
+    TF_WORKDIR = "${env.WORKSPACE}/gke-cluster" //Sets the Terraform Workspace
+    TF_IN_AUTOMATION = 'true'
+  }
+  
+  stages {
+    stage('Terraform Init') {
+      steps {
+        sh "cd ${env.TF_WORKDIR}; terraform init -input=false"
+      }
+    }
+ stage('Terraform Destroy') {
+      steps {
+        input 'Approve Destroy'  
+        sh "cd ${env.TF_WORKDIR};terraform destroy -auto-approve"
+      }
+    }
+  }
+}
