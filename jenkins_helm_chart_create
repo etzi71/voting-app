@@ -31,7 +31,10 @@ pipeline {
     }
     stage('get ip') {
        steps {
-        sh "/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 "
+         sh "/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 "
+         def p = '/snap/bin/kubectl get nodes -o wide'.execute() | 'grep Ready'.execute() |'head -1'.execute() | ['awk', '{ print $7 }'].execute()
+         p.waitFor()
+         println p.text
        }
     }   
   }    
