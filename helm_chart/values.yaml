@@ -6,16 +6,16 @@ image_vote:
   repository: etzi71/vote
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "42"
+  tag: "45"
 
 result_vote:
   repository: etzi71/result
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "42"
+  tag: "45"
 
 worker_vote:
   repository: etzi71/worker
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "42"
+  tag: "45"
