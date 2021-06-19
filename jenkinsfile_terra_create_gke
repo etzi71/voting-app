@@ -1,0 +1,28 @@
+pipeline {
+  agent { label 'master1' }
+  environment {
+    TF_WORKDIR = "${env.WORKSPACE}/gke-cluster" //Sets the Terraform Workspace
+    TF_IN_AUTOMATION = 'true'
+  }
+  parameters {
+              string(name: 'TE_DIR_NAME', defaultValue: '/home/etzi71/gke-cluster', description: 'The terraform directory name')
+  }
+  stages {
+    stage('Terraform Init') {
+      steps {
+        sh "cd ${env.TF_WORKDIR}; terraform init -input=false"
+      }
+    }
+    stage('Terraform Plan') {
+      steps {
+        sh "cd ${env.TF_WORKDIR};terraform plan"
+      }
+    }
+    stage('Terraform Apply') {
+      steps {
+        input 'Approve Apply'  
+        sh "cd ${env.TF_WORKDIR};terraform apply -auto-approve"
+      }
+    }
+  }
+}
