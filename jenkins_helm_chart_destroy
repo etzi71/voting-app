@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Destroy') {
       steps {
-        sh "cd ${env.WORKSPACE}/${params.HELM_DIR}; /snap/bin/helm delete ${params.HELM_NAME} ."
+        sh "cd ${env.WORKSPACE}/${params.HELM_DIR}; /snap/bin/helm delete ${params.HELM_NAME}"
       }
     }
   }    
