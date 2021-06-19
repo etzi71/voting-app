@@ -23,5 +23,11 @@ pipeline {
         sh "cd ${env.WORKSPACE}/${params.HELM_DIR}; /snap/bin/helm delete ${params.HELM_NAME}"
       }
     }
+    stage('gcloud create firewall-rules') {
+      steps {
+         sh "/snap/bin/gcloud compute firewall-rules delete -name node-port-${params.VOTE_PORT}"
+         sh "/snap/bin/gcloud compute firewall-rules delete -name node-port-${params.RESULT_PORT}"
+       }                
+    }       
   }    
 }
