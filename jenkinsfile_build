@@ -43,5 +43,12 @@ pipeline {
           sh "/home/etzi71/workspace/build_images/update_build_number.sh ${env.BUILD_NUMBER}"
       }
     }
+    stage('push to repository')
+      steps{
+         withCredentials([usernamePassword(credentialsId: '9008c74f-4647-40cd-b983-a85a9f0ffffa', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/etzi71/voting-app.git HEAD:master')
+         }
+      }
+    }  
   }
 }
