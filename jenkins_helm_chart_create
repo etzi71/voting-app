@@ -23,22 +23,20 @@ pipeline {
         sh "cd ${env.WORKSPACE}/${params.HELM_DIR}; /snap/bin/helm install ${params.HELM_NAME} ."
       }
     }
-    stage('gcloud create firewall-rules') {
-      steps {
-        try {
-            sh "/snap/bin/gcloud compute firewall-rules create node-port-${params.VOTE_PORT} --network ${params.GCP_CLUSTER_VPC_NAME} --allow tcp:${params.VOTE_PORT}"
-            sh "/snap/bin/gcloud compute firewall-rules create node-port-${params.RESULT_PORT} --network ${params.GCP_CLUSTER_VPC_NAME} --allow tcp:${params.RESULT_PORT}"
-        } catch (Exception e) {
+    try {
+        stage('gcloud create firewall-rules') {
+           steps {
+              sh "/snap/bin/gcloud compute firewall-rules create node-port-${params.VOTE_PORT} --network ${params.GCP_CLUSTER_VPC_NAME} --allow tcp:${params.VOTE_PORT}"
+              sh "/snap/bin/gcloud compute firewall-rules create node-port-${params.RESULT_PORT} --network ${params.GCP_CLUSTER_VPC_NAME} --allow tcp:${params.RESULT_PORT}"
+           }
+        }              
+    catch (Exception e) {
             echo 'Exception occurred: ' + e.toString()
         }
-      }
     }
     stage('get ip') {
        steps {
          sh "/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 "
-         def p = '/snap/bin/kubectl get nodes -o wide'.execute() | 'grep Ready'.execute() |'head -1'.execute() | ['awk', '{ print $7 }'].execute()
-         p.waitFor()
-         println p.text
        }
     }   
   }    
