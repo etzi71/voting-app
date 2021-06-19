@@ -29,10 +29,9 @@ pipeline {
         sh "/snap/bin/gcloud compute firewall-rules create node-port-${params.RESULT_PORT} --network ${params.GCP_CLUSTER_VPC_NAME} --allow tcp:${params.RESULT_PORT}"
       }
     }
-    stage('get url') {
+    stage('get ip') {
        steps {
-        sh 'echo `/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 |awk '{print $7}'`:${params.VOTE_PORT}'
-        sh 'echo `/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 |awk '{print $7}'`:${params.RESULT_PORT}'
+        sh "/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 "
        }
     }   
   }    
