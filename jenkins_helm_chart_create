@@ -38,7 +38,8 @@ pipeline {
      }       
     stage('get ip') {
        steps {
-         sh "/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 "
+         sh "/snap/bin/kubectl get nodes -o wide |grep Ready|grep gke |head -1 > ip.txt"
+         result = readFile('ip.txt').trim()
        }
     }   
   }    
