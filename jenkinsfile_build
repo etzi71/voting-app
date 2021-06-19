@@ -39,7 +39,7 @@ pipeline {
     }
     stage('Update helm values') {
       steps{
-          sh "sed -i s/01/${env.BUILD_NUMBER}/g /home/etzi71/voting-app/helm_chart/values.yaml"
+          sh "update_build_number.sh ${env.BUILD_NUMBER}"
       }
     }
   }
