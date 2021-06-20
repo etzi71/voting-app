@@ -1,26 +1,50 @@
+general:
+  namespace: vote
+  app: db
+  name: db
+  
 postgresql:
   postgresqlUser: postgres
   postgresqlPassword: postgres
+  port: "5432"
+
+image_db:
+  repository: postgres
+  pullPolicy: "IfNotPresent"
+  tag: "9.4"
 
 image_vote:
   repository: etzi71/vote
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "45"
-  replicas: "1"
+  replicas: 1
+  containerPort: 80
 
-result_vote:
+vote_service  
+  port: 5000
+  targetPort: 80
+  nodePort: 31000
+
+image_result:
   repository: etzi71/result
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
+  pullPolicy: "IfNotPresent"
+  replicas: 1
   tag: "45"
-  replicas: "1"
+  containerPort: 80 
 
-worker_vote:
+result_service:  
+  port: 5001
+  targetPort: 80
+  nodePort: 31001
+
+image_worker:
   repository: etzi71/worker
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "45"
-  replicas: "1"
-
-
+  
+redis:
+  port: 6379
+  replicas: 1
+  containerPort: 80
