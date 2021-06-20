@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
 #      - image: dockersamples/examplevotingapp_result:before
-      - image: "{{ .Values.image_vote.repository }}:{{ .Values.image_vote.tag}}"
-        imagePullPolicy: {{ .Values.image_vote.pullPolicy }}
+      - image: "{{ .Values.image_result.repository }}:{{ .Values.image_result.tag}}"
+        imagePullPolicy: {{ .Values.image_result.pullPolicy }}
         name: result
         ports:
-        - containerPort: {{ .Values.image_vote.containerPort }}
+        - containerPort: {{ .Values.image_result.containerPort }}
           name: result
