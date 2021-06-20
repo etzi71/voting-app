@@ -9,8 +9,8 @@ spec:
   type: NodePort
   ports:
   - name: "result-service"
-    port: {{ .Values.result_vote.port }}
-    targetPort: {{ .Values.result_vote.targetPort }}
-    nodePort: {{ .Values.result_vote.nodePort }}
+    port: {{ .Values.result_service.port }}
+    targetPort: {{ .Values.result_service.targetPort }}
+    nodePort: {{ .Values.result_service.nodePort }}
   selector:
     app: result
