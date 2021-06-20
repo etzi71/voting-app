@@ -6,7 +6,7 @@ metadata:
   name: redis
   namespace: "{{ .Values.general.namespace}}"
 spec:
-  replicas: "{{ .Values.redis.replicas}}"
+  replicas: {{ .Values.redis.replicas}}
   selector:
     matchLabels:
       app: redis
