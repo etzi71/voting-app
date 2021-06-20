@@ -4,9 +4,9 @@ metadata:
   labels:
     app: redis
   name: redis
-  namespace: vote
+  namespace: "{{ .Values.general.namespace}}"
 spec:
-  replicas: 1
+  replicas: "{{ .Values.redis.replicas}}"
   selector:
     matchLabels:
       app: redis
@@ -19,7 +19,7 @@ spec:
       - image: redis:alpine
         name: redis
         ports:
-        - containerPort: 6379
+        - containerPort: {{ .Values.redis.port}}
           name: redis
         volumeMounts:
         - mountPath: /data
