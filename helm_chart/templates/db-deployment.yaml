@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: "{{ .Values.general.app}}"
-  name: "{{ .Values.general.name}}"
+    app: db
+  name: db
   namespace: "{{ .Values.general.namespace}}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "{{ .Values.general.app}}"
+      app: db
   template:
     metadata:
       labels:
-        app: "{{ .Values.general.app}}"
+        app: db
     spec:
       containers:
       - image: "{{ .Values.image_db.repository}}:{{ .Values.image_db.tag}}"
