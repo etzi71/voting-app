@@ -9,7 +9,7 @@ spec:
   type: ClusterIP
   ports:
   - name: "redis-service"
-    port: 6379
+    port: "{{ .Values.redis.port}}"
     targetPort: "{{ .Values.redis.port}}"
   selector:
     app: redis
