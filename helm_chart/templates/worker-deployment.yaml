@@ -4,9 +4,9 @@ metadata:
   labels:
     app: worker
   name: worker
-  namespace: vote
+  namespace: "{{ .Values.general.namespace}}"
 spec:
-  replicas: 1
+  replicas: {{ .Values.image_worker.replicas }}
   selector:
     matchLabels:
       app: worker
@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
 #      - image: dockersamples/examplevotingapp_worker
-      - image: "{{ .Values.worker_vote.repository }}:{{ .Values.worker_vote.tag}}"
-        imagePullPolicy: {{ .Values.worker_vote.pullPolicy }}
+      - image: "{{ .Values.image_worker.repository }}:{{ .Values.image_worker.tag}}"
+        imagePullPolicy: {{ .Values.image_worker.pullPolicy }}
         name: worker
