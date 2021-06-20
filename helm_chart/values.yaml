@@ -17,7 +17,7 @@ image_vote:
   repository: etzi71/vote
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "46"
+  tag: "49"
   replicas: "1"
   containerPort: "80"
 
@@ -30,7 +30,7 @@ image_result:
   repository: etzi71/result
   pullPolicy: "IfNotPresent"
   replicas: "1"
-  tag: "46"
+  tag: "49"
   containerPort: "80" 
 
 result_service:  
@@ -42,7 +42,7 @@ image_worker:
   repository: etzi71/worker
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "46"
+  tag: "49"
   
 redis:
   port: "6379"
