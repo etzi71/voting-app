@@ -21,7 +21,7 @@ image_vote:
   replicas: 1
   containerPort: 80
 
-vote_service  
+vote_service:
   port: 5000
   targetPort: 80
   nodePort: 31000
