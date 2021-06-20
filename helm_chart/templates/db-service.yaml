@@ -9,8 +9,8 @@ spec:
   type: ClusterIP
   ports:
   - name: "db-service"
-    port: "{{ .Values.postgresql.port}}"
-    targetPort: "{{ .Values.postgresql.port}}"
+    port: {{ .Values.postgresql.port}}
+    targetPort: {{ .Values.postgresql.port}}
   selector:
     app: db
   
