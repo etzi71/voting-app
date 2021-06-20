@@ -16,15 +16,15 @@ spec:
         app: db
     spec:
       containers:
-      - image: postgres:9.4
+      - image: "{{ .Values.image_db.repository}}:{{ .Values.image_db.tag}}"
         name: postgres
         env:
         - name: POSTGRES_USER
-          value: postgres
+          value: "{{ .Values.postgresql.postgresqlUser}}"
         - name: POSTGRES_PASSWORD
-          value: postgres
+          value: "{{ .Values.postgresql.postgresqlPassword}}"
         ports:
-        - containerPort: 5432
+        - containerPort: "{{ .Values.postgresql.port}}"
           name: postgres
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
